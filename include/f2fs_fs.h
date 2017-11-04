@@ -983,7 +983,7 @@ extern u64 find_next_zero_bit_le(const u8 *, u64, u64);
 extern u_int32_t f2fs_cal_crc32(u_int32_t, void *, int);
 extern int f2fs_crc_valid(u_int32_t blk_crc, void *buf, int len);
 
-extern void f2fs_init_configuration(void);
+extern void f2fs_init_configuration(struct f2fs_configuration *);
 extern int f2fs_devs_are_umounted(void);
 extern int f2fs_dev_is_umounted(char *);
 extern int f2fs_get_device_info(void);

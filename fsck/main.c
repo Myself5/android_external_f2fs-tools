@@ -561,7 +561,7 @@ int main(int argc, char **argv)
 	struct f2fs_sb_info *sbi;
 	int ret = 0;
 
-	f2fs_init_configuration();
+	f2fs_init_configuration(&c);
 
 	f2fs_parse_options(argc, argv);
 

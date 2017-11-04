@@ -541,40 +541,40 @@ const char *get_rootdev()
 /*
  * device information
  */
-void f2fs_init_configuration(void)
+void f2fs_init_configuration(struct f2fs_configuration *c)
 {
 	int i;
 
-	c.ndevs = 1;
-	c.total_sectors = 0;
-	c.sector_size = 0;
-	c.sectors_per_blk = DEFAULT_SECTORS_PER_BLOCK;
-	c.blks_per_seg = DEFAULT_BLOCKS_PER_SEGMENT;
-	c.rootdev_name = get_rootdev();
-	c.wanted_total_sectors = -1;
-	c.zoned_mode = 0;
-	c.zoned_model = 0;
-	c.zone_blocks = 0;
+	c->ndevs = 1;
+	c->total_sectors = 0;
+	c->sector_size = 0;
+	c->sectors_per_blk = DEFAULT_SECTORS_PER_BLOCK;
+	c->blks_per_seg = DEFAULT_BLOCKS_PER_SEGMENT;
+	c->rootdev_name = get_rootdev();
+	c->wanted_total_sectors = -1;
+	c->zoned_mode = 0;
+	c->zoned_model = 0;
+	c->zone_blocks = 0;
 
 	for (i = 0; i < MAX_DEVICES; i++) {
-		memset(&c.devices[i], 0, sizeof(struct device_info));
-		c.devices[i].fd = -1;
-		c.devices[i].sector_size = DEFAULT_SECTOR_SIZE;
-		c.devices[i].end_blkaddr = -1;
-		c.devices[i].zoned_model = F2FS_ZONED_NONE;
+		memset(&c->devices[i], 0, sizeof(struct device_info));
+		c->devices[i].fd = -1;
+		c->devices[i].sector_size = DEFAULT_SECTOR_SIZE;
+		c->devices[i].end_blkaddr = -1;
+		c->devices[i].zoned_model = F2FS_ZONED_NONE;
 	}
 
 	/* calculated by overprovision ratio */
-	c.reserved_segments = 0;
-	c.overprovision = 0;
-	c.segs_per_sec = 1;
-	c.secs_per_zone = 1;
-	c.segs_per_zone = 1;
-	c.heap = 1;
-	c.vol_label = "";
-	c.trim = 1;
-	c.ro = 0;
-	c.kd = -1;
+	c->reserved_segments = 0;
+	c->overprovision = 0;
+	c->segs_per_sec = 1;
+	c->secs_per_zone = 1;
+	c->segs_per_zone = 1;
+	c->heap = 1;
+	c->vol_label = "";
+	c->trim = 1;
+	c->ro = 0;
+	c->kd = -1;
 }
 
 static int is_mounted(const char *mpt, const char *device)

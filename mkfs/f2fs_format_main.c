@@ -157,7 +157,7 @@ static void f2fs_parse_options(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	f2fs_init_configuration();
+	f2fs_init_configuration(&c);
 
 	f2fs_parse_options(argc, argv);
 
